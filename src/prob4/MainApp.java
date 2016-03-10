@@ -3,11 +3,11 @@ package prob4;
 public class MainApp {
 	public static void main(String[] args) {
 		try {
-			Stack stack = new MyStack(-1);
-
-			System.out.println("======================================");
+//			Stack stack = new MyStack(-1);
+//			System.out.println("======================================");
 
 			Stack stack = new MyStack(3);
+			
 			stack.push("Hello");
 			stack.push("World");
 			stack.push("!!!");
@@ -25,7 +25,7 @@ public class MainApp {
 
 			System.out.println(stack.pop());
 			System.out.println(stack.pop());
-		} catch (RuntimeException ex) {
+		} catch (MyStackException ex) {
 			System.out.println(ex.toString());
 		}
 	}
