@@ -1,7 +1,7 @@
 package prob4;
 
-public class MyStack implements Stack {
-	private String[] buffer;
+public class MyStack<E> implements Stack<E> {
+	private E[] buffer;
 	private int capacity;
 	private int top;
 
@@ -12,11 +12,11 @@ public class MyStack implements Stack {
 
 		this.capacity = capacity;
 		this.top = 0;
-		buffer = new String[capacity];
+		buffer = (E[])(new Object[capacity]);
 	}
 
 	public void resizeBuffer() {
-		String[] tmp = new String[capacity];
+		E[] tmp = (E[])(new Object[capacity]);
 
 		// tmp 배열에 옮겨 놓고 다시 버퍼에 덮어쓰기
 		for (int i = 0; i < buffer.length; i++) {
@@ -35,7 +35,7 @@ public class MyStack implements Stack {
 	}
 
 	@Override
-	public void push(String str) throws RuntimeException {
+	public void push(E str){
 		if (capacity == top) {
 			capacity *= 2;
 			resizeBuffer();
@@ -46,9 +46,9 @@ public class MyStack implements Stack {
 	}
 
 	@Override
-	public String pop() throws RuntimeException {
+	public E pop(){
 		if (top <= 0) {
-			return "null";
+			return null;
 		}
 
 		return buffer[--top];
